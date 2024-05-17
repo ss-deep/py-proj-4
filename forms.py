@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField
 from wtforms.validators import DataRequired, Length
-from markupsafe import Markup
+# from markupsafe import Markup
 
 class TeamForm(FlaskForm):
 

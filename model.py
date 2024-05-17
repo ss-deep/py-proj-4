@@ -28,7 +28,6 @@ class User(db.Model):
 
     teams=db.relationship("Team",backref="user",lazy=True)
     
-
     def __init__(self, username, password):
         self.username = username
         self.password = password
