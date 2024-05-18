@@ -1,16 +1,24 @@
 from flask import Flask, render_template, url_for, redirect
-from forms import TeamForm,ProjectForm
+from forms import UserForm,TeamForm,ProjectForm
+from model import User, Team, Project, connect_to_db
 
 app=Flask(__name__)
 app.secret_key = "keep this secret"
 
 @app.route("/")
 def home():
-    # team_form=TeamForm()
-    return render_template("home.html")
+    user_form=UserForm()
+    if user_form.validate_on_submit():
+        username=user_form.username.data
+        print(username)
+    else:
+        print("user not validated")
+    return render_template("user.html",user_form=user_form)
+
 
 @app.route("/add_team", methods=["GET","POST"])
 def add_team():
+    
     team_form=TeamForm()
     if team_form.validate_on_submit():
         team_name=team_form.team_name.data
@@ -33,4 +41,5 @@ def add_project():
 
 
 if __name__=="__main__":
+    connect_to_db(app)
     app.run(debug=True) 

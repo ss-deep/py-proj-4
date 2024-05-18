@@ -1,0 +1,14 @@
+{%extends "home.html"%}
+
+{% block content %}
+<h3 class="py-3 text-center">User Details</h3>
+<div class="container col-md-5 col-lg-4 text-center">
+    <form action="{{url_for('home')}}" method="POST">
+        {{user_form.hidden_tag()}}
+        {{user_form.csrf_token()}}
+        {{user_form.user_name.label(class="form-label")}}{{user_form.user_name(class="form-control")}}
+        {{user_form.password.label(class="form-label")}}{{user_form.password(class="form-control")}}
+        {{user_form.submit(class="btn btn-primary my-4")}}
+    </form>
+</div>
+{% endblock %}
