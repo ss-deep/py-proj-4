@@ -2,10 +2,11 @@
 
 {% block content %}
 <h3 class="py-3 text-center">Team Details</h3>
-<div class="container col-md-5 col-lg-4 text-center">
+<div class="container col-md-5 col-lg-4 ">
     <form action="{{url_for('add_team')}}" method="POST">
         {{team_form.hidden_tag()}}
         {{team_form.csrf_token()}}
+        {{team_form.user_selection.label(class="form-label")}}{{team_form.user_selection(class="form-control")}}
         {{team_form.team_name.label(class="form-label")}}{{team_form.team_name(class="form-control")}}
         {{team_form.submit(class="btn btn-primary my-4")}}
     </form>

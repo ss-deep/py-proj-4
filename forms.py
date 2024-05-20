@@ -12,16 +12,21 @@ class UserForm(FlaskForm):
     
 class TeamForm(FlaskForm):
 
+    user_selection=SelectField("Select User")
     team_name=StringField("Team Name",validators=[DataRequired(),Length(min=4,max=255)])
     submit=SubmitField("Submit")
+
+    def update_users(self,users):
+        self.user_selection.choices=[(user.id, user.username) for user in users]
 
 class ProjectForm(FlaskForm):
 
     project_name=StringField("Project Name",validators=[DataRequired()])
     description=TextAreaField("Description")
     completed=BooleanField("Completed",false_values={False, 'false', ''})
-    team_id=SelectField("Team Id",choices=[('chi', 'Chicken'), ('bf', 'Beef'),
+    team_selection=SelectField("Select Team",choices=[('chi', 'Chicken'), ('bf', 'Beef'),
                                    ('fish', 'Fish')])
     submit=SubmitField("Submit")
 
-
+    def update_teams(self,teams):
+        self.team_selection.choices=[(team.id, team.team_name) for team in teams]

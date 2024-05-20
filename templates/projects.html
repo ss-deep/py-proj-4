@@ -4,14 +4,14 @@
 {% block content %}
 
 <h3 class="py-3 text-center">Project Details</h3>
-<div class="container col-md-5 col-lg-4 text-center">
+<div class="container col-md-5 col-lg-4 ">
     <form action="{{url_for('add_project')}}" method="POST">
         {{proj_form.hidden_tag()}}
         {{proj_form.csrf_token()}}
+        {{proj_form.team_selection.label(class="form-label")}}{{proj_form.team_selection(class="form-control")}}
         {{proj_form.project_name.label(class="form-label")}}{{proj_form.project_name(class="form-control")}}
         {{proj_form.description.label(class="form-label")}}{{proj_form.description(class="form-control")}}
         {{proj_form.completed(class="mx-2")}}{{proj_form.completed.label(class="form-label")}}<br>
-        {{proj_form.team_id.label(class="form-label")}}{{proj_form.team_id(class="form-control")}}
         {{proj_form.submit(class="btn btn-primary my-4")}}
     </form>
 </div>

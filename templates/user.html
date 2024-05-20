@@ -2,7 +2,7 @@
 
 {% block content %}
 <h3 class="py-3 text-center">User Details</h3>
-<div class="container col-md-5 col-lg-4 text-center">
+<div class="container col-md-5 col-lg-4 ">
     <form action="{{url_for('home')}}" method="POST">
         {{user_form.hidden_tag()}}
         {{user_form.csrf_token()}}
