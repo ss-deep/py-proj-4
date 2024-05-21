@@ -7,20 +7,29 @@ app.secret_key = "keep this secret"
 
 @app.route("/",methods=["GET","POST"])
 def home():
+   return redirect('/get_table')
+
+@app.route("/get_table")
+def get_table():
+    Users=User.query.all()
+    Teams=Team.query.all()
+    Projects=Project.query.all()
+
+    return render_template("tables.html",Users=Users,Teams=Teams,Projects=Projects)
+
+@app.route("/add_user",methods=['GET','POST'])
+def add_user():
     user_form=UserForm()
     if user_form.validate_on_submit():
-        # user_name=user_form.user_name.data
         db.session.add(User(user_form.user_name.data, user_form.password.data))
         db.session.commit()
     else:
         print("user not validated")
     return render_template("user.html",user_form=user_form)
 
-
 @app.route("/add_team", methods=["GET","POST"])
 def add_team():
     team_form=TeamForm()
-    # print(User.query.all())
     team_form.update_users(User.query.all())
     if team_form.validate_on_submit():
         team_name=team_form.team_name.data

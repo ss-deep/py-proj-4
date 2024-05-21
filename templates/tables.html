@@ -1,0 +1,67 @@
+{%extends "home.html"%}
+
+{% block content %}
+<h2 class="py-3 text-center">Team Details</h2>  
+<div class="container col-md-8 col-lg-8 ">
+    <h3 class="py-1 text-center">User Table</h3>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">User Id</th>
+            <th scope="col">Username</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in Users %}
+            <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Team Id</th>
+            <th scope="col">Team Name</th>
+            <th scope="col">User Id</th>
+            </tr>
+        </thead>
+        <h3 class="py-1 text-center">Team Table</h3>
+        <tbody>
+        {% for team in Teams %}
+            <tr>
+            <td>{{team.id}}</td>
+            <td>{{team.team_name}}</td>
+            <td>{{team.user_id}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h3 class="py-1 text-center">Project Table</h3>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Project Id</th>
+            <th scope="col">Project Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Completed</th>
+            <th scope="col">Team Id</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project in Projects %}
+            <tr>
+            <td>{{project.id}}</td>
+            <td>{{project.project_name}}</td>
+            <td>{{project.description}}</td>
+            <td>{{project.completed}}</td>
+            <td>{{project.team_id}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}    
